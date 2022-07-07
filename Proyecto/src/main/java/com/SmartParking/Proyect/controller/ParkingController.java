@@ -18,7 +18,7 @@ public class ParkingController {
     @Autowired
     private ParkingService service;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+
     @GetMapping("/getAll")
     public List<ParkingLot> list() {
         return service.listAll();
@@ -33,5 +33,17 @@ public class ParkingController {
             return new ResponseEntity<ParkingLot>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Integer id) {
+        service.delete(id);
+
+
+    }
+    @PostMapping("/add")
+    public void add(ParkingLot parkingLot) {
+        service.save(parkingLot);
+    }
+
 
 }

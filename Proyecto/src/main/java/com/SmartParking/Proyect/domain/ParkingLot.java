@@ -9,11 +9,11 @@ public class ParkingLot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Parking_Lot;
     private String name;
-    private String capacity;
+    private int capacity;
     private String province;
     private String district;
 
-    public ParkingLot(int id_Parking_Lot, String name, String capacity, String province, String district) {
+    public ParkingLot(int id_Parking_Lot, String name, int capacity, String province, String district) {
         this.setId_ParkingLot(id_Parking_Lot) ;
         this.setName(name);
         this.setCapacity(capacity);
@@ -39,11 +39,11 @@ public class ParkingLot {
         this.name = name;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
