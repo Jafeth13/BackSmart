@@ -1,7 +1,7 @@
 package com.SmartParking.Proyect.controller;
 
 
-import com.SmartParking.Proyect.domain.ParkingLot;
+import com.SmartParking.Proyect.domain.Parking_Lot;
 import com.SmartParking.Proyect.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,17 +20,17 @@ public class ParkingController {
 
 
     @GetMapping("/getAll")
-    public List<ParkingLot> list() {
+    public List<Parking_Lot> list() {
         return service.listAll();
     }
 
     @GetMapping("/getParking/{id}")
-    public ResponseEntity<ParkingLot> get(@PathVariable Integer id) {
+    public ResponseEntity<Parking_Lot> get(@PathVariable Integer id) {
         try {
-            ParkingLot parkingLot = service.get(id);
-            return new ResponseEntity<ParkingLot>(parkingLot, HttpStatus.OK);
+            Parking_Lot parkingLot = service.get(id);
+            return new ResponseEntity<Parking_Lot>(parkingLot, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<ParkingLot>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Parking_Lot>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -40,8 +40,8 @@ public class ParkingController {
 
 
     }
-    @PostMapping("/add")
-    public void add(ParkingLot parkingLot) {
+    @PostMapping("/add/")
+    public void add(Parking_Lot parkingLot) {
         service.save(parkingLot);
     }
 

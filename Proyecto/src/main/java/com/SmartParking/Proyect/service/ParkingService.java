@@ -1,7 +1,7 @@
 package com.SmartParking.Proyect.service;
 
 
-import com.SmartParking.Proyect.domain.ParkingLot;
+import com.SmartParking.Proyect.domain.Parking_Lot;
 import com.SmartParking.Proyect.repository.ParkingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,14 +16,14 @@ public class ParkingService {
     @Autowired
     private ParkingRepository repository;
 
-    public List<ParkingLot> listAll() {return repository.findAll();
+    public List<Parking_Lot> listAll() {return repository.findAll();
     }
 
-    public void save(ParkingLot parkingLot) {
+    public void save(Parking_Lot parkingLot) {
         repository.save(parkingLot);
     }
 
-    public ParkingLot get(int id) {
+    public Parking_Lot get(int id) {
         return repository.findById(id).get();
     }
 

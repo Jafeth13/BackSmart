@@ -4,30 +4,32 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 
 @Entity
-public class ParkingLot {
+public class Parking_Lot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Parking_Lot;
     private String name;
     private int capacity;
     private String province;
+    private String city;
     private String district;
 
-    public ParkingLot(int id_Parking_Lot, String name, int capacity, String province, String district) {
-        this.setId_ParkingLot(id_Parking_Lot) ;
+    public Parking_Lot(int id_Parking_Lot, String name,int capacity, String province,String city, String district) {
+        this.setId_Parking_Lot(id_Parking_Lot) ;
         this.setName(name);
         this.setCapacity(capacity);
         this.setProvince(province);
+        this.setCity(city);
         this.setDistrict(district);
     }
-    public ParkingLot(){
+    public Parking_Lot(){
     }
 
-    public int getId_ParkingLot() {
+    public int getId_Parking_Lot() {
         return id_Parking_Lot;
     }
 
-    public void setId_ParkingLot(int id_Parking_Lot) {
+    public void setId_Parking_Lot(int id_Parking_Lot) {
         this.id_Parking_Lot = id_Parking_Lot;
     }
 
@@ -53,6 +55,14 @@ public class ParkingLot {
 
     public void setProvince(String province) {
         this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getDistrict() {
