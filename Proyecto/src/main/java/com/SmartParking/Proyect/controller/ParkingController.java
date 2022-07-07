@@ -41,7 +41,7 @@ public class ParkingController {
 
 
     }
-    @PostMapping("/add/")
+    @PostMapping("/add")
     public void add(Parking_Lot parkingLot) {
         service.save(parkingLot);
     }
