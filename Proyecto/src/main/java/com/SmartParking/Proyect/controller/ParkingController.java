@@ -2,6 +2,7 @@ package com.SmartParking.Proyect.controller;
 
 
 import com.SmartParking.Proyect.domain.Parking_Lot;
+import com.SmartParking.Proyect.domain.Parking_Lot;
 import com.SmartParking.Proyect.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
