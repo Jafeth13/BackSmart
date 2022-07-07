@@ -14,7 +14,7 @@ public class Parking_Lot {
     private String city;
     private String district;
 
-    public Parking_Lot(int id_Parking_Lot, String name,int capacity, String province,String city, String district) {
+    public Parking_Lot(String province,int capacity,String city, String district, String name,int id_Parking_Lot) {
         this.setId_Parking_Lot(id_Parking_Lot) ;
         this.setName(name);
         this.setCapacity(capacity);
