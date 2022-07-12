@@ -19,6 +19,7 @@ public class SpotController {
     private SpotService service;
 
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getAll")
     public List<Spot> list() {
         return service.listAll();
@@ -37,14 +38,10 @@ public class SpotController {
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {
         service.delete(id);
-
-
     }
     @PostMapping("/add")
     public void add(@RequestBody Spot spot) {
         service.save(spot);
     }
-
-
 }
 
