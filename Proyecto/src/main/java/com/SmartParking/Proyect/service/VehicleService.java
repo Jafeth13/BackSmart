@@ -1,8 +1,7 @@
 package com.SmartParking.Proyect.service;
 
-
-import com.SmartParking.Proyect.domain.Parking_Lot;
-import com.SmartParking.Proyect.repository.ParkingRepository;
+import com.SmartParking.Proyect.domain.Vehicle;
+import com.SmartParking.Proyect.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,19 +10,18 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ParkingService {
-
+public class VehicleService {
     @Autowired
-    private ParkingRepository repository;
+    private VehicleRepository repository;
 
-    public List<Parking_Lot> listAll() {return repository.findAll();
+    public List<Vehicle> listAll() {return repository.findAll();
     }
 
-    public void save(Parking_Lot parkingLot) {
-        repository.save(parkingLot);
+    public void save(Vehicle vehicle) {
+        repository.save(vehicle);
     }
 
-    public Parking_Lot get(int id) {
+    public Vehicle get(int id) {
         return repository.findById(id).get();
     }
 
