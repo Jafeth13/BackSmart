@@ -46,5 +46,11 @@ public class ParkingController {
         service.save(parkingLot);
     }
 
+    @PutMapping(value = "/update")
+    public void update(@RequestBody Parking_Lot parkingLot){
+        
+        service.save(parkingLot);
+    }
+
 
 }
