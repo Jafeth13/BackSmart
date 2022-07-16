@@ -1,6 +1,7 @@
 package com.SmartParking.Proyect.controller;
 
 
+import com.SmartParking.Proyect.domain.Parking_Lot;
 import com.SmartParking.Proyect.domain.User_Smart;
 import com.SmartParking.Proyect.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,11 @@ public class UserController {
     @DeleteMapping("/deleteUser/{id}")
     public void delete(@PathVariable Integer id) {
         userService.delete(id);
+    }
+
+    @PutMapping(value = "/update")
+    public void update(@RequestBody User_Smart user_smart){
+        userService.save(user_smart);
     }
 
 }
