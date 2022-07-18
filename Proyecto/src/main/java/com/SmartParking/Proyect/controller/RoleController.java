@@ -34,7 +34,7 @@ public class RoleController {
     }
 
     @PostMapping("/add")
-    public void add(Role role){
+    public void add(@RequestBody Role role){
         roleService.save(role);
     }
 

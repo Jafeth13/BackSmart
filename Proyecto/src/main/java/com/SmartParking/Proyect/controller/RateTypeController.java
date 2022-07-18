@@ -35,7 +35,7 @@ public class RateTypeController {
     }
 
     @PostMapping("/add")
-    public void add(RateType rateType){
+    public void add(@RequestBody RateType rateType){
         rateTypeService.save(rateType);
     }
 
