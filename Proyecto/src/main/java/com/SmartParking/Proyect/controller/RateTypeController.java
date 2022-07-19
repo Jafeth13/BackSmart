@@ -39,14 +39,9 @@ public class RateTypeController {
         rateTypeService.save(rateType);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<RateType> update(@RequestBody RateType rateType) {
-        try {
-            rateTypeService.save(rateType);
-            return new ResponseEntity<RateType>(rateType, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<RateType>(HttpStatus.NOT_FOUND);
-        }
+    @PutMapping(value = "/update")
+    public void update(@RequestBody RateType rateType){
+        rateTypeService.save(rateType);
     }
 
     @DeleteMapping("/delete/{id}")
