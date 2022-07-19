@@ -38,14 +38,10 @@ public class RoleController {
         roleService.save(role);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Role> update(@RequestBody Role role, @PathVariable Integer id) {
-        try {
-            roleService.save(role);
-            return new ResponseEntity<Role>(role, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<Role>(HttpStatus.NOT_FOUND);
-        }
+
+    @PutMapping(value = "/update")
+    public void update(@RequestBody Role role){
+        roleService.save(role);
     }
 
     @DeleteMapping("/delete/{id}")

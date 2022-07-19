@@ -39,8 +39,8 @@ public class RateTypeController {
         rateTypeService.save(rateType);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<RateType> update(@RequestBody RateType rateType, @PathVariable Integer id) {
+    @PutMapping("/update")
+    public ResponseEntity<RateType> update(@RequestBody RateType rateType) {
         try {
             rateTypeService.save(rateType);
             return new ResponseEntity<RateType>(rateType, HttpStatus.OK);
