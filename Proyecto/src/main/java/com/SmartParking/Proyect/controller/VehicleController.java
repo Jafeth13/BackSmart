@@ -1,6 +1,7 @@
 package com.SmartParking.Proyect.controller;
 
 import com.SmartParking.Proyect.domain.Parking_Lot;
+import com.SmartParking.Proyect.domain.User_Smart;
 import com.SmartParking.Proyect.domain.Vehicle;
 import com.SmartParking.Proyect.service.ParkingService;
 import com.SmartParking.Proyect.service.VehicleService;
@@ -31,6 +32,11 @@ public class VehicleController {
         } catch (NoSuchElementException e) {
             return new ResponseEntity<Vehicle>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping(value = "/update")
+    public void update(@RequestBody Vehicle vehicle){
+        service.save(vehicle);
     }
 
     @DeleteMapping("/delete/{id}")
