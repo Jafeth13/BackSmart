@@ -43,5 +43,10 @@ public class SpotController {
     public void add(@RequestBody Spot spot) {
         service.save(spot);
     }
+
+    @PutMapping("/update")
+    public void update(@RequestBody Spot spot) {
+        service.save(spot);
+    }
 }
 
