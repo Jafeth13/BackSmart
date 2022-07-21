@@ -30,4 +30,7 @@ public class ParkingService {
     public void delete(int id) {
         repository.deleteById(id);
     }
+
+    public List<Parking_Lot> listProvince(String province) {return repository.findParking_LotByProvince(province);
+    }
 }

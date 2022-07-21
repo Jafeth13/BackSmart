@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -23,6 +24,13 @@ public class ParkingController {
     @GetMapping("/getAll")
     public List<Parking_Lot> list() {
         return service.listAll();
+    }
+
+    @GetMapping("/getProv/{province}")
+    public List<Parking_Lot> listProvince(@PathVariable String province) {
+        
+        return service.listProvince(province);
+
     }
 
     @GetMapping("/getParking/{id}")
