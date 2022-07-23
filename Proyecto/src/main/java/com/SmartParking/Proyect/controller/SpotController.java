@@ -35,6 +35,13 @@ public class SpotController {
         }
     }
 
+
+    @GetMapping("/getSpots/{id}")
+    public List<Spot> listSpot(@PathVariable int id) {
+
+        return service.listSpot(id);
+
+    }
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {
         service.delete(id);

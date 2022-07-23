@@ -31,4 +31,7 @@ public class SpotService {
     public void delete(int id) {
         repository.deleteById(id);
     }
+
+    public List<Spot> listSpot(int id_parking) {return repository.findSpotsByParking_Lot(id_parking);
+    }
 }
