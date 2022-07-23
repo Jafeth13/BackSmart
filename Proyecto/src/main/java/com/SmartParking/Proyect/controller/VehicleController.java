@@ -8,6 +8,7 @@ import com.SmartParking.Proyect.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,11 +21,13 @@ public class VehicleController {
     private VehicleService service;
 
     @GetMapping("/getAll")
+
     public List<Vehicle> list() {
         return service.listAll();
     }
 
     @GetMapping("/getVehicle/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<Vehicle> get(@PathVariable Integer id) {
         try {
             Vehicle vehicle = service.get(id);
@@ -35,16 +38,19 @@ public class VehicleController {
     }
 
     @PutMapping(value = "/update")
+    @PreAuthorize("hasRole('Admin')")
     public void update(@RequestBody Vehicle vehicle){
         service.save(vehicle);
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
 
     @PostMapping("/add")
+    @PreAuthorize("hasRole('Admin')")
     public void add(@RequestBody Vehicle vehicle) {
         service.save(vehicle);
     }

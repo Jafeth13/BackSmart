@@ -6,6 +6,7 @@ import com.SmartParking.Proyect.service.SpotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,11 +22,13 @@ public class SpotController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getAll")
+    @PreAuthorize("hasRole('Admin')")
     public List<Spot> list() {
         return service.listAll();
     }
 
     @GetMapping("/getSpot/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<Spot> get(@PathVariable Integer id) {
         try {
             Spot spot = service.get(id);
@@ -37,21 +40,25 @@ public class SpotController {
 
 
     @GetMapping("/getSpots/{id}")
+    @PreAuthorize("hasRole('Client')")
     public List<Spot> listSpot(@PathVariable int id) {
 
         return service.listSpot(id);
 
     }
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
     @PostMapping("/add")
+    @PreAuthorize("hasRole('Admin')")
     public void add(@RequestBody Spot spot) {
         service.save(spot);
     }
 
     @PutMapping("/update")
+    @PreAuthorize("hasRole('Admin')")
     public void update(@RequestBody Spot spot) {
         service.save(spot);
     }

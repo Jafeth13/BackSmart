@@ -7,6 +7,7 @@ import com.SmartParking.Proyect.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,11 +23,13 @@ public class ParkingController {
 
 
     @GetMapping("/getAll")
+    @PreAuthorize("hasRole('Admin')")
     public List<Parking_Lot> list() {
         return service.listAll();
     }
 
     @GetMapping("/getProv/{province}")
+    @PreAuthorize("hasRole('Client')")
     public List<Parking_Lot> listProvince(@PathVariable String province) {
         
         return service.listProvince(province);
@@ -34,6 +37,7 @@ public class ParkingController {
     }
 
     @GetMapping("/getParking/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<Parking_Lot> get(@PathVariable Integer id) {
         try {
             Parking_Lot parkingLot = service.get(id);
@@ -44,17 +48,20 @@ public class ParkingController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public void delete(@PathVariable Integer id) {
         service.delete(id);
 
 
     }
     @PostMapping("/add")
+    @PreAuthorize("hasRole('Admin')")
     public void add(@RequestBody Parking_Lot parkingLot) {
         service.save(parkingLot);
     }
 
     @PutMapping(value = "/update")
+    @PreAuthorize("hasRole('Admin')")
     public void update(@RequestBody Parking_Lot parkingLot){
         
         service.save(parkingLot);

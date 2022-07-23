@@ -21,7 +21,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @SpringBootApplication(scanBasePackages = { "com.SmartParking.Proyect.*" })
-@ComponentScan({ "com.SmartParking.Proyect.controller","com.SmartParking.Proyect.repository", "com.SmartParking.Proyect.service" } )
+@ComponentScan({ "com.SmartParking.Proyect.controller","com.SmartParking.Proyect.repository", "com.SmartParking.Proyect.service",
+        "com.SmartParking.Proyect.configuration", "com.SmartParking.Proyect.util"} )
 @EntityScan("com.SmartParking.Proyect.domain")
 @EnableJpaRepositories("com.SmartParking.Proyect.repository")
 
@@ -34,19 +35,6 @@ public class LabSpringbootApplication {
     @GetMapping("/greet")
     public String greet(@RequestParam(value = "myName",defaultValue = "World") String name){
         return String.format("Hello %s!", name);
-    }
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("PUT","GET","POST","DELETE","PATCH","OPTIONS");
-
-
-            }
-
-        };
     }
 
 }
