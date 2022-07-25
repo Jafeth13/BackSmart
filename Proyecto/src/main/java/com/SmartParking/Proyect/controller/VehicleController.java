@@ -27,7 +27,6 @@ public class VehicleController {
     }
 
     @GetMapping("/getVehicle/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<Vehicle> get(@PathVariable Integer id) {
         try {
             Vehicle vehicle = service.get(id);
@@ -38,19 +37,16 @@ public class VehicleController {
     }
 
     @PutMapping(value = "/update")
-    @PreAuthorize("hasRole('Admin')")
     public void update(@RequestBody Vehicle vehicle){
         service.save(vehicle);
     }
 
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
 
     @PostMapping("/add")
-    @PreAuthorize("hasRole('Admin')")
     public void add(@RequestBody Vehicle vehicle) {
         service.save(vehicle);
     }

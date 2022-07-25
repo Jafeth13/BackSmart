@@ -21,13 +21,11 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/getAllUser")
-    @PreAuthorize("hasRole('Admin')")
     public List<User_Smart> list() {
         return userService.listAllUser();
     }
 
     @GetMapping("/getUser/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<User_Smart> get(@PathVariable Integer id) {
         try {
             User_Smart user = userService.get(id);
@@ -38,19 +36,16 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    @PreAuthorize("hasRole('Admin')")
     public void add(@RequestBody User_Smart user) {
         userService.save(user);
     }
 
     @DeleteMapping("/deleteUser/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public void delete(@PathVariable Integer id) {
         userService.delete(id);
     }
 
     @PutMapping(value = "/update")
-    @PreAuthorize("hasRole('Admin')")
     public void update(@RequestBody User_Smart user_smart){
         userService.save(user_smart);
     }

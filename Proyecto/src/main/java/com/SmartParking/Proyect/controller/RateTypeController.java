@@ -21,13 +21,11 @@ public class RateTypeController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getAllRateTypes")
-    @PreAuthorize("hasRole('Admin')")
     public List<RateType> list() {
         return rateTypeService.listAll();
     }
 
     @GetMapping("/getRateType/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<RateType> get(@PathVariable Integer id) {
         try {
             RateType rateType = rateTypeService.get(id);
@@ -38,21 +36,17 @@ public class RateTypeController {
     }
 
     @PostMapping("/add")
-    @PreAuthorize("hasRole('Admin')")
     public void add(@RequestBody RateType rateType){
         rateTypeService.save(rateType);
     }
 
     @PutMapping(value = "/update")
-    @PreAuthorize("hasRole('Admin')")
     public void update(@RequestBody RateType rateType){
         rateTypeService.save(rateType);
     }
 
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public void delete(@PathVariable Integer id) {
         rateTypeService.delete(id);
     }
-
 }

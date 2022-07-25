@@ -20,13 +20,11 @@ public class RoleController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getAllRoles")
-    @PreAuthorize("hasRole('Admin')")
     public List<Role> list() {
         return roleService.listAll();
     }
 
     @GetMapping("/getRole/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<Role> get(@PathVariable Integer id) {
         try {
             Role role = roleService.get(id);
@@ -37,20 +35,17 @@ public class RoleController {
     }
 
     @PostMapping("/add")
-    @PreAuthorize("hasRole('Admin')")
     public void add(@RequestBody Role role){
         roleService.save(role);
     }
 
 
     @PutMapping(value = "/update")
-    @PreAuthorize("hasRole('Admin')")
     public void update(@RequestBody Role role){
         roleService.save(role);
     }
 
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public void delete(@PathVariable Integer id) {
         roleService.delete(id);
     }

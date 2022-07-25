@@ -21,7 +21,6 @@ public class VehicleTypeController {
 
 
     @GetMapping("/getAll")
-    @PreAuthorize("hasRole('Admin')")
     public List<Vehicle_Type> list() {
         return service.listAll();
     }
