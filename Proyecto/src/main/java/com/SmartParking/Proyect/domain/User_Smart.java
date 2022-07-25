@@ -1,6 +1,7 @@
 package com.SmartParking.Proyect.domain;
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class User_Smart {
@@ -23,6 +24,9 @@ public class User_Smart {
     @ManyToOne
     @JoinColumn(name = "role_Id")
     private Role role;
+    @ManyToMany
+    @JoinTable(name = "Vehicle_User", joinColumns = @JoinColumn(name = "User_Id", referencedColumnName = "Id_User"), inverseJoinColumns = @JoinColumn(name = "Vehicle_Id", referencedColumnName = "Id_Vehicle"))
+    private Collection<Vehicle> vehicle;
 
     public User_Smart(int id_User, String identification, String name, String last_Name, String tel_number, String email, String password, Role role) {
         this.id_User = id_User;
@@ -34,12 +38,26 @@ public class User_Smart {
         this.password = password;
         this.role = role;
     }
+    public User_Smart(int id_User, String identification, String name, String last_Name, String tel_number, String email, String password, Role role,Collection<Vehicle> vehicle) {
+        this.id_User = id_User;
+        this.identification = identification;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.vehicle = vehicle;
 
+    }
     public User_Smart() {
 
     }
 
-
+    public Collection<Vehicle> getVehicles() {
+        return vehicle;
+    }
+    public void setVehicle(Collection<Vehicle> vehicle){
+        this.vehicle=vehicle;
+    }
     public int getId_User() {
         return id_User;
     }

@@ -34,6 +34,15 @@ public class UserController {
             return new ResponseEntity<User_Smart>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/getUserEmail/{email}")
+    public ResponseEntity<User_Smart> get(@PathVariable String email) {
+        try {
+            User_Smart user = userService.findByEmail(email);
+            return new ResponseEntity<User_Smart>(user, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<User_Smart>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @PostMapping("/addUser")
     public void add(@RequestBody User_Smart user) {
