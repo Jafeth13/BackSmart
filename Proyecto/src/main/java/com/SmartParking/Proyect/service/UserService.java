@@ -18,6 +18,11 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private EmailSenderService emailSenderService;
+    @Autowired
+    private MessageSenderService messageSenderService;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public List<User_Smart> listAllUser() {return userRepository.findAll();}
@@ -33,6 +38,9 @@ public class UserService {
     public void save(User_Smart user_smart) {
         user_smart.setPassword(getEncodedPassword(user_smart.getPassword()));
         userRepository.save(user_smart);
+        emailSenderService.sendEmail(user_smart.getEmail(), "Correo de Bienvenida", "Bienvenido!! Mensaje de confirmacion de cuenta con SmartParking");
+        messageSenderService.sendMessage(user_smart.getTel_number(), "Bienvenido!! Mensaje de confirmacion de cuenta con SmartParking");
+
     }
 
     public User_Smart findByEmail(String email){ return  userRepository.findByEmail(email); }
