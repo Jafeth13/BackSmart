@@ -3,6 +3,8 @@ package com.SmartParking.Proyect.controller;
 
 import com.SmartParking.Proyect.domain.Parking_Lot;
 import com.SmartParking.Proyect.domain.User_Smart;
+import com.SmartParking.Proyect.service.EmailSenderService;
+import com.SmartParking.Proyect.service.MessageSenderService;
 import com.SmartParking.Proyect.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    private EmailSenderService emailSenderService;
+    private MessageSenderService messageSenderService;
 
     @GetMapping("/getAllUser")
     public List<User_Smart> list() {
@@ -47,6 +51,8 @@ public class UserController {
     @PostMapping("/addUser")
     public void add(@RequestBody User_Smart user) {
         userService.save(user);
+        emailSenderService.sendEmail(user.getEmail(), "Correo de Bienvenida", "Bienvenido!! Mensaje de confirmacion de cuenta con SmartParking");
+        messageSenderService.sendMessage(user.getTel_number(), "Bienvenido!! Mensaje de confirmacion de cuenta con SmartParking");
     }
 
     @DeleteMapping("/deleteUser/{id}")
