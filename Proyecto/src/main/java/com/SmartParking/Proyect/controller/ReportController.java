@@ -31,7 +31,7 @@ public class ReportController {
 
         response.setHeader(headerKey, headerValue);
 
-        this.service.export(response);
+        this.service.export1(response);
     }
 
     @GetMapping("/generate2")
@@ -45,7 +45,7 @@ public class ReportController {
 
         response.setHeader(headerKey, headerValue);
 
-        this.service.export(response);
+        this.service.export2(response);
     }
 
     @GetMapping("/generate3")
@@ -59,6 +59,6 @@ public class ReportController {
 
         response.setHeader(headerKey, headerValue);
 
-        this.service.export(response);
+        this.service.export3(response);
     }
 }
