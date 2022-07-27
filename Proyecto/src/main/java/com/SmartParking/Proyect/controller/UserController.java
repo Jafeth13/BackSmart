@@ -1,15 +1,11 @@
 package com.SmartParking.Proyect.controller;
 
 
-import com.SmartParking.Proyect.domain.Parking_Lot;
 import com.SmartParking.Proyect.domain.User_Smart;
-import com.SmartParking.Proyect.service.EmailSenderService;
-import com.SmartParking.Proyect.service.MessageSenderService;
 import com.SmartParking.Proyect.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -59,6 +55,14 @@ public class UserController {
     @PutMapping(value = "/update")
     public void update(@RequestBody User_Smart user_smart){
         userService.save(user_smart);
+    }
+
+
+    @GetMapping("/getClients/{role}")
+    public List<User_Smart> clientList(@PathVariable String role) {
+
+        return userService.clientList(role);
+
     }
 
 }

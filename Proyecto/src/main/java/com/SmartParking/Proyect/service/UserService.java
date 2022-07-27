@@ -1,6 +1,7 @@
 package com.SmartParking.Proyect.service;
 
 
+import com.SmartParking.Proyect.domain.Parking_Lot;
 import com.SmartParking.Proyect.domain.User_Smart;
 import com.SmartParking.Proyect.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +42,11 @@ public class UserService {
         messageSenderService.sendMessage(user_smart.getTel_number(), "Bienvenido!! Mensaje de confirmacion de cuenta con SmartParking");
         emailSenderService.sendEmail(user_smart.getEmail(), "Correo de Bienvenida", "Bienvenido!! Mensaje de confirmacion de cuenta con SmartParking");
     }
-
     public User_Smart findByEmail(String email){ return  userRepository.findByEmail(email); }
-
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
+    }
+
+    public List<User_Smart> clientList(String role) {return userRepository.findUser_SmartByRoleName(role);
     }
 }
