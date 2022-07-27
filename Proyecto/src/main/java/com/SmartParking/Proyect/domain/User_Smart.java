@@ -15,7 +15,7 @@ public class User_Smart {
 
     private String last_Name;
 
-    private String tel_number;
+    private String tel_Number;
 
     private String email;
 
@@ -28,12 +28,12 @@ public class User_Smart {
     @JoinTable(name = "Vehicle_User", joinColumns = @JoinColumn(name = "User_Id", referencedColumnName = "Id_User"), inverseJoinColumns = @JoinColumn(name = "Vehicle_Id", referencedColumnName = "Id_Vehicle"))
     private Collection<Vehicle> vehicle;
 
-    public User_Smart(int id_User, String identification, String name, String last_Name, String tel_number, String email, String password, Role role) {
+    public User_Smart(int id_User, String identification, String name, String last_Name, String tel_Number, String email, String password, Role role) {
         this.id_User = id_User;
         this.identification = identification;
         this.name = name;
         this.last_Name = last_Name;
-        this.tel_number = tel_number;
+        this.tel_Number = tel_Number;
         this.email = email;
         this.password = password;
         this.role = role;
@@ -90,12 +90,12 @@ public class User_Smart {
         this.last_Name = last_Name;
     }
 
-    public String getTel_number() {
-        return tel_number;
+    public String getTel_Number() {
+        return tel_Number;
     }
 
-    public void setTel_number(String tel_number) {
-        this.tel_number = tel_number;
+    public void setTel_Number(String tel_Number) {
+        this.tel_Number = tel_Number;
     }
 
     public String getEmail() {
