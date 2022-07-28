@@ -66,7 +66,7 @@ public class ReportService {
             table.addCell(String.valueOf(user.getId_User()));
             table.addCell(user.getIdentification());
             table.addCell(user.getName()+" "+user.getLast_Name());
-            table.addCell(user.getTel_number());
+            table.addCell(user.getTel_Number());
             table.addCell(user.getRole().getName());
 
             if(user.getRole().getId_Role() == 1){
